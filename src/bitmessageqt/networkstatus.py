@@ -187,8 +187,12 @@ class NetworkStatus(QtWidgets.QWidget, RetranslateMixin):
                 brush = QtGui.QBrush(QtGui.QColor("yellow"), QtCore.Qt.BrushStyle.SolidPattern)
             else:
                 brush = QtGui.QBrush(QtGui.QColor("green"), QtCore.Qt.BrushStyle.SolidPattern)
+            # XXX quick darty fix for issue #2233
+            foreground_brush = QtGui.QBrush(QtGui.QColor("black"), QtCore.Qt.BrushStyle.SolidPattern)
             for j in range(1):
                 self.tableWidgetConnectionCount.item(0, j).setBackground(brush)
+                # XXX quick darty fix for issue #2233
+                self.tableWidgetConnectionCount.item(0, j).setForeground(foreground_brush)
             self.tableWidgetConnectionCount.item(0, 0).setData(QtCore.Qt.ItemDataRole.UserRole, destination)
             self.tableWidgetConnectionCount.item(0, 1).setData(QtCore.Qt.ItemDataRole.UserRole, outbound)
         else:
